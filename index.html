@@ -9,7 +9,9 @@
         setInterval(notify, 45 * 60 * 1000);
 
         function notify() {
-            var notification = new Notification("Time to stand up. We want you to live longer!");
+            var notification = new Notification("Time to stand up. We want you to live longer!", {
+                icon: 'assets/images/icon.svg'
+            });
             notification.onclick = function () {
                 window.open("https://draggarwal.files.wordpress.com/2012/06/office-stretches.jpg");
             };
