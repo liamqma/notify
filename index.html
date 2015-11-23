@@ -1,24 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Notify</title>
-    <script>
-        Notification.requestPermission();
-        notify()
-        setInterval(notify, 45 * 60 * 1000);
-
-        function notify() {
-            var notification = new Notification("Time to stand up. We want you to live longer!", {
-                icon: 'assets/images/icon.svg'
-            });
-            notification.onclick = function () {
-                window.open("https://draggarwal.files.wordpress.com/2012/06/office-stretches.jpg");
-            };
-        }
-    </script>
-</head>
-<body>
-
-</body>
+<html>
+  <head>
+    <title>Redux counter example</title>
+  </head>
+  <body>
+    <div id="root">
+    </div>
+    <script src="/static/bundle.js"></script>
+  </body>
 </html>
