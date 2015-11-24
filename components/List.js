@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import {add} from '../actions/notification';
 
 class List extends Component {
     render() {
@@ -8,10 +9,10 @@ class List extends Component {
                 <tbody>
                 {notifications.map((notification, index) => {
                     return (
-                        <tr>
+                        <tr key={index}>
                             <td>{index}</td>
                             <td>{notification.moment.format()}</td>
-                            <td>Input box</td>
+                            <td>{notification.completed.toString()}</td>
                         </tr>
                     );
                 })}
@@ -22,7 +23,8 @@ class List extends Component {
 }
 
 List.propTypes = {
-    notifications: PropTypes.array.isRequired
+    notifications: PropTypes.array.isRequired,
+    add: PropTypes.func.isRequired
 };
 
 export default List

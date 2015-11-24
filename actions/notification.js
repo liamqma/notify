@@ -1,6 +1,5 @@
-export function add(data) {
+export function add() {
     return {
-        type: 'ADD',
-        data
+        type: 'ADD'
     }
 }
