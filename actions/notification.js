@@ -3,3 +3,10 @@ export function add() {
         type: 'ADD'
     }
 }
+
+export function toggle(index) {
+    return {
+        type: 'TOGGLE',
+        index
+    }
+}

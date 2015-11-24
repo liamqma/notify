@@ -5,7 +5,9 @@ import App from './containers/App'
 import configureStore from './store/configureStore';
 import { DevTools, DebugPanel, LogMonitor } from 'redux-devtools/lib/react';
 
-const store = configureStore()
+Notification.requestPermission();
+
+const store = configureStore();
 
 render(
     <div>
