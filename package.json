@@ -17,6 +17,7 @@
   },
   "homepage": "http://rackt.github.io/redux",
   "dependencies": {
+    "js-cookie": "^2.0.4",
     "lodash": "^3.10.1",
     "material-ui": "^0.13.3",
     "moment": "^2.10.6",

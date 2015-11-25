@@ -45,7 +45,7 @@ class List extends Component {
         const { notifications } = this.props;
         return (
             <Table>
-                <TableHeader>
+                <TableHeader adjustForCheckbox={false} displaySelectAll={false}>
                     <TableRow>
                         <TableHeaderColumn colSpan="3" style={{textAlign: 'center'}}>
                             Office Stretch
@@ -57,7 +57,7 @@ class List extends Component {
                         <TableHeaderColumn>Completed</TableHeaderColumn>
                     </TableRow>
                 </TableHeader>
-                <TableBody>
+                <TableBody displayRowCheckbox={false}>
                     {notifications.map((notification, index) => {
                         return (
                             <TableRow key={index}>
