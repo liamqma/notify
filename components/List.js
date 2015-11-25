@@ -1,4 +1,5 @@
 import React, { Component, PropTypes } from 'react'
+import cookies from 'js-cookie';
 const Table = require('material-ui/lib/table/table');
 const TableBody = require('material-ui/lib/table/table-body');
 const TableHeader = require('material-ui/lib/table/table-header');
@@ -41,6 +42,10 @@ class List extends Component {
         this.props.add();
     }
 
+    componentWillReceiveProps(nextProps) {
+        cookies.set('notifications', nextProps.notifications);
+    }
+
     render() {
         const { notifications } = this.props;
         return (
@@ -66,7 +71,8 @@ class List extends Component {
                                 <TableRowColumn>
                                     {
                                         notification.completed ?
-                                            <FontIcon className="material-icons">check</FontIcon> : <FontIcon className="material-icons">close</FontIcon>
+                                            <FontIcon className="material-icons">check</FontIcon> :
+                                            <FontIcon className="material-icons">close</FontIcon>
                                     }
                                 </TableRowColumn>
                             </TableRow>

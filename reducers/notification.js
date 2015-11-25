@@ -1,7 +1,7 @@
 import moment from 'moment';
 import _ from 'lodash';
 
-function now() { return moment().format('HH:mm'); };
+function now() { return moment().format('DD-MM-YYYY HH:mm'); };
 
 const initialState = [];
 
