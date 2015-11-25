@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react'
 import cookies from 'js-cookie';
+import moment from 'moment';
 const Table = require('material-ui/lib/table/table');
 const TableBody = require('material-ui/lib/table/table-body');
 const TableHeader = require('material-ui/lib/table/table-header');
@@ -8,6 +9,8 @@ const TableRow = require('material-ui/lib/table/table-row');
 const TableRowColumn = require('material-ui/lib/table/table-row-column');
 const FontIcon = require('material-ui/lib/font-icon');
 import {add} from '../actions/notification';
+
+const ONE_HOUR_IN_milliseconds = 1000 * 60 * 60;
 
 function notify() {
     var notification = new Notification("Time to stand up. We want you to live longer!", {
@@ -21,16 +24,31 @@ function notify() {
 class List extends Component {
     componentDidMount() {
 
-        const oneHour = 1000 * 60 * 60 * 1;
-        const oneMinute = 1000 * 60;
-        const oneSecond = 1000;
+        const now = moment();
+        const lastNotification = this.props.notifications[this.props.notifications.length - 1];
+        if (lastNotification) {
 
-        this.notify();
-        setInterval(this.notify.bind(this), oneHour);
+            const listNotificationMoment = moment(lastNotification.moment, 'DD-MM-YYYY HH:mm');
 
+            if (now.diff(listNotificationMoment) > ONE_HOUR_IN_milliseconds) {
+                this.notify();
+                setInterval(this.notify.bind(this), ONE_HOUR_IN_milliseconds);
+            } else {
+                console.log(`Next notification will be in ${Math.round((ONE_HOUR_IN_milliseconds - now.diff(listNotificationMoment)) / 1000 / 60)} minutes`);
+                setTimeout(() => {
+                    this.notify();
+                    setInterval(this.notify.bind(this), ONE_HOUR_IN_milliseconds);
+                }, ONE_HOUR_IN_milliseconds - now.diff(listNotificationMoment));
+            }
+
+        } else {
+            this.notify();
+            setInterval(this.notify.bind(this), ONE_HOUR_IN_milliseconds);
+        }
     }
 
     notify() {
+
         const notification = new Notification("Time to stand up. We want you to live longer!", {
             icon: 'assets/images/icon.svg'
         });
