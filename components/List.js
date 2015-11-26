@@ -1,23 +1,23 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component, PropTypes } from 'react';
 import cookies from 'js-cookie';
 import moment from 'moment';
-const Table = require('material-ui/lib/table/table');
-const TableBody = require('material-ui/lib/table/table-body');
-const TableHeader = require('material-ui/lib/table/table-header');
-const TableHeaderColumn = require('material-ui/lib/table/table-header-column');
-const TableRow = require('material-ui/lib/table/table-row');
-const TableRowColumn = require('material-ui/lib/table/table-row-column');
-const FontIcon = require('material-ui/lib/font-icon');
+import Table from 'material-ui/lib/table/table';
+import TableBody from 'material-ui/lib/table/table-body';
+import TableHeader from 'material-ui/lib/table/table-header';
+import TableHeaderColumn from 'material-ui/lib/table/table-header-column';
+import TableRow from 'material-ui/lib/table/table-row';
+import TableRowColumn from 'material-ui/lib/table/table-row-column';
+import FontIcon from 'material-ui/lib/font-icon';
 import {add} from '../actions/notification';
 
 const ONE_HOUR_IN_milliseconds = 1000 * 60 * 60;
 
 function notify() {
     var notification = new Notification("Time to stand up. We want you to live longer!", {
-        icon: 'assets/images/icon.svg'
+        icon: '/static/bell.png'
     });
     notification.onclick = function () {
-        window.open("https://draggarwal.files.wordpress.com/2012/06/office-stretches.jpg");
+        window.open("/static/office-stretches.jpg");
     };
 }
 
