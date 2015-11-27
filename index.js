@@ -12,7 +12,7 @@ const notifications = cookies.get('notifications');
 let store = null;
 
 if (notifications) {
-    store = configureStore({notification: JSON.parse(notifications)});
+    store = configureStore({notifications: JSON.parse(notifications)});
 } else {
     store = configureStore();
 }

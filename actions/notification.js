@@ -4,9 +4,9 @@ export function add() {
     }
 }
 
-export function toggle(index) {
+export function complete(index) {
     return {
-        type: 'TOGGLE',
+        type: 'COMPLETE',
         index
     }
 }
