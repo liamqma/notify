@@ -47,11 +47,11 @@ class App extends Component {
     notify() {
 
         const notification = new Notification("Time to stand up. We want you to live longer!", {
-            icon: '/static/bell.png'
+            icon: 'bell.png'
         });
         const nextNotificationIndex = this.props.notifications.length;
         notification.onclick = () => {
-            window.open("/static/office-stretches.jpg");
+            window.open("office-stretches.jpg");
             this.props.complete(nextNotificationIndex);
         };
         this.props.add();
