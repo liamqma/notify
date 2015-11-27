@@ -10,7 +10,9 @@ import FontIcon from 'material-ui/lib/font-icon';
 
 class List extends Component {
     render() {
-        const { notifications } = this.props;
+        const notifications = this.props.notifications.filter((notification) => {
+            return moment(notification.moment).isSame(moment(), 'day');
+        });
         return (
             <div>
                 <Table>
@@ -31,7 +33,7 @@ class List extends Component {
                             return (
                                 <TableRow key={index}>
                                     <TableRowColumn>{index + 1}</TableRowColumn>
-                                    <TableRowColumn>{moment(notification.moment).format('DD-MM-YYYY HH:mm')}</TableRowColumn>
+                                    <TableRowColumn>{moment(notification.moment).format('HH:mm')}</TableRowColumn>
                                     <TableRowColumn>
                                         {
                                             notification.completed ?

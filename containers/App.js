@@ -30,10 +30,10 @@ class App extends Component {
         if (notifications.length === 0) {
             this.notify();
         } else {
-            if (nextNotificationInMilliseconds(notifications[0].moment) > ONE_HOUR_IN_milliseconds) {
+            if (nextNotificationInMilliseconds(notifications[notifications.length - 1].moment) > ONE_HOUR_IN_milliseconds) {
                 this.notify();
             } else {
-                notie.alert(4, `Next notification will be in ${Math.round((ONE_HOUR_IN_milliseconds - moment().diff(moment(notifications[0].moment))) / 1000 / 60)} minutes`, 3);
+                notie.alert(4, `Next notification will be in ${Math.round((ONE_HOUR_IN_milliseconds - moment().diff(moment(notifications[notifications.length - 1].moment))) / 1000 / 60)} minutes`, 3);
             }
         }
 
