@@ -6,8 +6,6 @@ import cookies from 'js-cookie';
 import configureStore from './store/configureStore';
 import { DevTools, DebugPanel, LogMonitor } from 'redux-devtools/lib/react';
 
-Notification.requestPermission();
-
 const notifications = cookies.get('notifications');
 let store = null;
 
