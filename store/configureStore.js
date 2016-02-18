@@ -1,6 +1,5 @@
 import { compose, createStore, applyMiddleware } from 'redux'
 import thunk from 'redux-thunk'
-import { devTools, persistState } from 'redux-devtools'
 import reducer from '../reducers'
 
 export default function configureStore(initialState) {
@@ -10,9 +9,7 @@ export default function configureStore(initialState) {
         // Enables your middleware:
         applyMiddleware(thunk), // any Redux middleware, e.g. redux-thunk
         // Provides support for DevTools:
-        devTools(),
-        // Lets you write ?debug_session=<name> in address bar to persist debug sessions
-        persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/))
+        window.devToolsExtension ? window.devToolsExtension() : f => f
     )(createStore);
 
     const store = finalCreateStore(reducer, initialState)
